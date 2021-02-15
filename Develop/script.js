@@ -11,26 +11,32 @@ let generateRandom;
 // Write password to the #password input
 function writePassword() {
   var charCount = userOption()
-  var password = generatePassword();
+  var password = generatePassword(charCount);
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
- userOption()
+ console.log(charCount);
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+//calls functions//
+
+function chooseChar(array){
+  let generateRandom = array[Math.floor(Math.random() * array.length)];
+  return generateRandom;
+  }
+
 
 
 function userOption(){
   var charCount = prompt("How many characters would you like your password to contain? (8-128)");
+  console.log(typeof charCount);
+ if(isNaN(charCount)=== true){
+  alert("Password must contain a Number")
+  return;
+ }
  if(charCount < 8 || charCount > 128 ){
    alert("Password must be between 8 and 128 characters");
    return;
- } 
-if(isNaN(charCount)=== true){
-  alert("Password must contain a Number")
-  return;
+
 }
 var checkUpperCase = confirm("Do you want a Uppercase letter?");
 var checkLowerCase = confirm("Do you want a Lowercase letter?");
@@ -40,38 +46,33 @@ if( checkUpperCase !== true && checkLowerCase !== true && CheckNumbers !== true 
   alert("Must contains atleast 1 special character or numnber")
 }
 if(checkUpperCase===true){
-  allArrays=allArrays.concat(upperCase);
+  pwlength=pwlength.concat(upperCase);
 }
 if(checkLowerCase===true){
-  allArrays=allArrays.concat(lowerCase);
+  pwlength=pwlength.concat(lowerCase);
 }
 if(CheckNumbers===true){
-  allArrays=allArrays.concat(numbers);
+  pwlength=pwlength.concat(numbers);
 }
 if(CheckSymbols===true){
-  allArrays=allArrays.concat(symbols);
+  pwlength=pwlength.concat(symbols);
 }
 return charCount;
 };
 
+function generatePassword(charCount){
 
-function chooseChar(array){
-  let generateRandom = array[Math.floor(Math.random() * array.length)];
-  return generateRandom;
-  }
-
-
-for(var i=0; i< charCount; i++){
-  let randomPassword = allArrays[Math.floor(Math.random()* allArrays.length)];
-  console.log(randomPassword)
+  var newPassword =[]
+  for(var i=0; i< charCount; i++){
+   let randomPassword = pwlength[Math.floor(Math.random()* pwlength.length)];
+   console.log(randomPassword)
   newPassword.push(randomPassword);
-  console.log('newPassword: ', newPassword)
-}
-return newPassword.join('');
+  console.log('newPassword:', newPassword)
+  }
+  return newPassword.join('');
+  
+  }
+  generateBtn.addEventListener("click", writePassword);
+  //generates new random password//
 
-
-
-function generatePassword(){
-  console.log(pwlength.push(generateRandom))
-
-}
+  
