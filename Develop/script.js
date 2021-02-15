@@ -51,6 +51,7 @@ if(CheckNumbers===true){
 if(CheckSymbols===true){
   allArrays=allArrays.concat(symbols);
 }
+return charCount;
 };
 
 
@@ -58,6 +59,16 @@ function chooseChar(array){
   let generateRandom = array[Math.floor(Math.random() * array.length)];
   return generateRandom;
   }
+
+
+for(var i=0; i< charCount; i++){
+  let randomPassword = allArrays[Math.floor(Math.random()* allArrays.length)];
+  console.log(randomPassword)
+  newPassword.push(randomPassword);
+  console.log('newPassword: ', newPassword)
+}
+return newPassword.join('');
+
 
 
 function generatePassword(){
