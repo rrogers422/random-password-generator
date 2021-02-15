@@ -21,4 +21,23 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 
+function userOption(){
+  var charCount = prompt("How many characters would you like your password to contain? (8-128)");
+ if(charCount < 8 || charCount > 128 ){
+   alert("Password must be between 8 and 128 characters");
+   return;
+ } 
+if(isNaN(charCount)=== true){
+  alert("Must have number")
+  return;
+}
+var checkUpperCase = confirm("Do you want a Uppercase letter?");
+var checkLowerCase = confirm("Do you want a Lowercase letter?");
+var CheckNumbers = confirm("Do you want a number?");
+var CheckSymbols = confirm("Do you want to add a symbol?");
+if( checkUpperCase !== true && checkLowerCase !== true && CheckNumbers !== true && CheckSymbols !== true ){
+  alert("Must contains atleast 1 special character or numnber")
+}
+};
+
 
