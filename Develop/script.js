@@ -10,6 +10,7 @@ let generateRandom;
 
 // Write password to the #password input
 function writePassword() {
+  var charCount = userOption()
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
@@ -28,7 +29,7 @@ function userOption(){
    return;
  } 
 if(isNaN(charCount)=== true){
-  alert("Must have number")
+  alert("Password must contain a Number")
   return;
 }
 var checkUpperCase = confirm("Do you want a Uppercase letter?");
@@ -38,6 +39,28 @@ var CheckSymbols = confirm("Do you want to add a symbol?");
 if( checkUpperCase !== true && checkLowerCase !== true && CheckNumbers !== true && CheckSymbols !== true ){
   alert("Must contains atleast 1 special character or numnber")
 }
+if(checkUpperCase===true){
+  allArrays=allArrays.concat(upperCase);
+}
+if(checkLowerCase===true){
+  allArrays=allArrays.concat(lowerCase);
+}
+if(CheckNumbers===true){
+  allArrays=allArrays.concat(numbers);
+}
+if(CheckSymbols===true){
+  allArrays=allArrays.concat(symbols);
+}
 };
 
 
+function chooseChar(array){
+  let generateRandom = array[Math.floor(Math.random() * array.length)];
+  return generateRandom;
+  }
+
+
+function generatePassword(){
+  console.log(pwlength.push(generateRandom))
+
+}
